@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity
     @OnClick(R.id.BTN_SHOWLIST)
     public void showListOnClick(View view)
     {
-
+        Intent showList = new Intent(MainActivity.this, ImageListActivity.class);
+        startActivity(showList);
     }
     private void uploadFile(String imgPath)
     {
