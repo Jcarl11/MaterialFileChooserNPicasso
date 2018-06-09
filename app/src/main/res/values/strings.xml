@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MaterialFileChooserNPicasso</string>
+    <string name="pickBtnLabel">PICK</string>
+    <string name="uploadBtnLabel">UPLOAD</string>
+    <string name="showBtnLabel">SHOW List</string>
+    <string name="chooseImageLabel">Choose image</string>
 </resources>

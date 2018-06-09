@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "289467377672",
+    "firebase_url": "https://joey-s-project.firebaseio.com",
+    "project_id": "joey-s-project",
+    "storage_bucket": "joey-s-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289467377672:android:5b5ef45e5f4cfdd1",
+        "android_client_info": {
+          "package_name": "com.example.windows.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289467377672-uefg40q3048mvhds7j8jva2rqjuueqim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.windows.chatapp",
+            "certificate_hash": "ade6161a93f25393b74614086041c06e3ef68c94"
+          }
+        },
+        {
+          "client_id": "289467377672-orvs4r5e6eh1b97o8lsc0lsonlu6mn72.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "289467377672-orvs4r5e6eh1b97o8lsc0lsonlu6mn72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLbU7QwLPF9tC3QZ4ULUl_Rlq1jLe9Hes"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289467377672-orvs4r5e6eh1b97o8lsc0lsonlu6mn72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289467377672:android:180ae2e1818c541a",
+        "android_client_info": {
+          "package_name": "com.example.windows.materialfilechoosernpicasso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289467377672-jgin017t8bvmnnauv5o28hhgepf63squ.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.windows.materialfilechoosernpicasso",
+            "certificate_hash": "ade6161a93f25393b74614086041c06e3ef68c94"
+          }
+        },
+        {
+          "client_id": "289467377672-orvs4r5e6eh1b97o8lsc0lsonlu6mn72.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "289467377672-orvs4r5e6eh1b97o8lsc0lsonlu6mn72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLbU7QwLPF9tC3QZ4ULUl_Rlq1jLe9Hes"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289467377672-orvs4r5e6eh1b97o8lsc0lsonlu6mn72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
