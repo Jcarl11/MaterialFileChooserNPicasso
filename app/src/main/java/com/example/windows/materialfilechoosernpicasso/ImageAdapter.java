@@ -41,7 +41,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
     {
         ImagesEntity imEntity = imagesEntities.get(position);
         holder.title.setText(imEntity.getTitle());
-        Picasso.get().load(imEntity.getImage_url()).into(holder.image);
+        Picasso.get().load(imEntity.getImage_url()).fit().centerCrop().into(holder.image);
     }
 
     @Override

@@ -4,8 +4,7 @@
     android:id="@+id/cardview_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="5dp"
+    android:layout_marginBottom="5dp"
     app:cardElevation="8dp"
     android:backgroundTint="@android:color/black">
 
@@ -20,7 +19,9 @@
             android:layout_height="wrap_content"
             android:text="Title"
             android:textColor="@android:color/white"
-            android:layout_margin="5dp"/>
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:textSize="20dp"/>
 
         <ImageView
             android:id="@+id/image_holder"
