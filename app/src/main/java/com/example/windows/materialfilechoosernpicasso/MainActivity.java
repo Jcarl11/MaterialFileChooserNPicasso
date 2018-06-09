@@ -14,6 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.nbsp.materialfilepicker.MaterialFilePicker;
 import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import com.squareup.picasso.Picasso;
@@ -43,6 +49,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Dexter.withActivity(MainActivity.this)
+                .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        Toast.makeText(MainActivity.this, "Permission needed to use application", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+
+                    }
+                }).check();
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -60,7 +84,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.BTN_PICK)
     public void pickOnClick(View view)
     {
-       checkPermissionsAndOpenFilePicker();
+        new MaterialFilePicker()
+                .withActivity(MainActivity.this)
+                .withRequestCode(1000)
+                .withHiddenFiles(true) // Show hidden files and folders
+                .start();
     }
 
     @OnClick(R.id.BTN_UPLOAD)
@@ -68,46 +96,5 @@ public class MainActivity extends AppCompatActivity {
     {
         Toast.makeText(MainActivity.this, "Upload Clicked", Toast.LENGTH_SHORT).show();
     }
-    private void checkPermissionsAndOpenFilePicker() {
-        String permission = Manifest.permission.READ_EXTERNAL_STORAGE;
 
-        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                showError();
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{permission}, PERMISSIONS_REQUEST_CODE);
-            }
-        } else {
-
-            new MaterialFilePicker()
-                    .withActivity(MainActivity.this)
-                    .withRequestCode(1000)
-                    .withHiddenFiles(true) // Show hidden files and folders
-                    .start();
-        }
-    }
-
-    private void showError() {
-        Toast.makeText(this, "Allow external storage reading", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_CODE: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    new MaterialFilePicker()
-                            .withActivity(MainActivity.this)
-                            .withRequestCode(1000)
-                            .withHiddenFiles(true) // Show hidden files and folders
-                            .start();
-
-                } else {
-                    showError();
-                }
-            }
-        }
-    }
 }
