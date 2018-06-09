@@ -12,12 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -53,13 +56,17 @@ public class MainActivity extends AppCompatActivity
     ImageView imageView;
     @BindView(R.id.BTN_SHOWLIST)
     Button buttonShowList;
+    @BindView(R.id.ET_TITLE)
+    EditText img_title;
     private StorageReference mStorageRef;
+    private DatabaseReference mDatabaseRef;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        mStorageRef = FirebaseStorage.getInstance().getReference("images");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("images");
         ButterKnife.bind(this);
         Dexter.withActivity(MainActivity.this)
                 .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity
             String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             path.setText(filePath);
             File f = new File(filePath);
-            Picasso.get().load(f).into(imageView);
+            Picasso.get().load(f).placeholder(R.drawable.ic_image_box).into(imageView);
         }
     }
 
@@ -125,13 +132,16 @@ public class MainActivity extends AppCompatActivity
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setCancelable(true);
         progressDialog.show();
-        StorageReference ref = mStorageRef.child("images/" + UUID.randomUUID().toString());
+        StorageReference ref = mStorageRef.child(UUID.randomUUID().toString());
         ref.putFile(imgPathUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>()
                 {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
                     {
+                        ImagesEntity ie = new ImagesEntity(img_title.getText().toString().trim(), taskSnapshot.getDownloadUrl().toString());
+                        String imgID = mDatabaseRef.push().getKey();
+                        mDatabaseRef.child(imgID).setValue(ie);
                         progressDialog.dismiss();
                         Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                     }

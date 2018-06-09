@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    app:cardElevation="8dp"
+    android:backgroundTint="@android:color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="350dp"
         android:orientation="vertical">
 
         <TextView
@@ -17,14 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:layout_margin="5dp"/>
 
         <ImageView
             android:id="@+id/image_holder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_pdf_box"
             android:scaleType="fitCenter"/>
 
     </LinearLayout>

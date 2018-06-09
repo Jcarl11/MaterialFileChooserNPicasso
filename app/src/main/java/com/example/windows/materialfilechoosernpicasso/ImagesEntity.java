@@ -12,9 +12,7 @@ public class ImagesEntity
     private String image_url;
 
     public ImagesEntity()
-    {
-
-    }
+    {}
     public ImagesEntity(String title, String image_url) {
         this.title = title;
         this.image_url = image_url;
@@ -28,10 +26,5 @@ public class ImagesEntity
     public String getImage_url()
     {
         return image_url;
-    }
-
-    public File getImage_url_file()
-    {
-        return new File(image_url);
     }
 }

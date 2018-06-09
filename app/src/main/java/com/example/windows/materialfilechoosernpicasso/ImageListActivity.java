@@ -22,7 +22,10 @@ import butterknife.BindView;
 public class ImageListActivity extends AppCompatActivity
 {
     public RecyclerView recyclerView;
+
     private ImageAdapter imageAdapter;
+
+    private DatabaseReference mReference;
     private List<ImagesEntity> imagesEntityList;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,5 +36,27 @@ public class ImageListActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(ImageListActivity.this));
         imagesEntityList = new ArrayList<>();
+        mReference = FirebaseDatabase.getInstance().getReference("images");
+        mReference.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for(DataSnapshot postSnapshot : dataSnapshot.getChildren())
+                {
+                    ImagesEntity ie = postSnapshot.getValue(ImagesEntity.class);
+                    imagesEntityList.add(ie);
+                }
+
+                imageAdapter = new ImageAdapter(ImageListActivity.this, imagesEntityList);
+                recyclerView.setAdapter(imageAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                Toast.makeText(ImageListActivity.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

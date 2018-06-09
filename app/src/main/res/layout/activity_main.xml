@@ -37,14 +37,21 @@
          android:text="@string/showBtnLabel"
          android:backgroundTint="@android:color/holo_red_light"/>
     </LinearLayout>
-
+    <EditText
+        android:id="@+id/ET_TITLE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_layout"
+        android:hint="Title"
+        android:textColor="@android:color/black"
+        android:inputType="text"/>
     <ImageView
         android:id="@+id/img_view"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_folder_48dp"
         android:contentDescription="Image"/>
 
     <TextView
