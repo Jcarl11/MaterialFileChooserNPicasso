@@ -18,12 +18,11 @@
         android:layout_height="wrap_content"
         android:text="PICK" />
 
-    <TextView
-        android:id="@+id/TXTVIEW_PATH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Path"
-        />
+        <TextView
+            android:id="@+id/TXTVIEW_PATH"
+            android:text="Choose image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <ImageView
