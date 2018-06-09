@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
     TextView path;
     @BindView(R.id.img_view)
     ImageView imageView;
-    public static final int PERMISSIONS_REQUEST_CODE = 0;
-    public static final int FILE_PICKER_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
