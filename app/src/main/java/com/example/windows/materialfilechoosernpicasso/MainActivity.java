@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity
     TextView path;
     @BindView(R.id.img_view)
     ImageView imageView;
+    @BindView(R.id.BTN_SHOWLIST)
+    Button buttonShowList;
     private StorageReference mStorageRef;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -109,6 +111,11 @@ public class MainActivity extends AppCompatActivity
         uploadFile(path.getText().toString().trim());
     }
 
+    @OnClick(R.id.BTN_SHOWLIST)
+    public void showListOnClick(View view)
+    {
+
+    }
     private void uploadFile(String imgPath)
     {
         Uri imgPathUri = Uri.fromFile(new File(imgPath));
