@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MaterialFileChooserNPicasso.iml" filepath="$PROJECT_DIR$/.idea/MaterialFileChooserNPicasso.iml" />
+      <module fileurl="file://D:/JOEY/AndroidProjects/MaterialFileChooserNPicasso/.idea/MaterialFileChooserNPicasso.iml" filepath="D:/JOEY/AndroidProjects/MaterialFileChooserNPicasso/.idea/MaterialFileChooserNPicasso.iml" />
       <module fileurl="file://$PROJECT_DIR$/MaterialFileChooserNPicasso.iml" filepath="$PROJECT_DIR$/MaterialFileChooserNPicasso.iml" />
-      <module fileurl="file://D:\JOEY\AndroidProjects\MaterialFileChooserNPicasso\.idea\MaterialFileChooserNPicasso.iml" filepath="D:\JOEY\AndroidProjects\MaterialFileChooserNPicasso\.idea\MaterialFileChooserNPicasso.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

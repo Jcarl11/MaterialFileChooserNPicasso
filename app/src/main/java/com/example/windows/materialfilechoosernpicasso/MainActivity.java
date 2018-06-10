@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    protected void onCreate(final Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -74,20 +74,20 @@ public class MainActivity extends AppCompatActivity
                 {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse response) {
-                        Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
                     public void onPermissionDenied(PermissionDeniedResponse response) {
-                        Toast.makeText(MainActivity.this, "Permission needed to use application", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-
+                        token.continuePermissionRequest();
                     }
                 }).check();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -97,11 +97,24 @@ public class MainActivity extends AppCompatActivity
         {
             String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
             path.setText(filePath);
-            File f = new File(filePath);
-            Picasso.get().load(f).placeholder(R.drawable.ic_image_box).into(imageView);
+            showImage(filePath);
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showImage(path.getText().toString().trim());
+    }
+
+    private void showImage(String imgPath)
+    {
+        if(imgPath != null)
+        {
+            File f = new File(imgPath);
+            Picasso.get().load(f).into(imageView);
+        }
+    }
     @OnClick(R.id.BTN_PICK)
     public void pickOnClick(View view)
     {

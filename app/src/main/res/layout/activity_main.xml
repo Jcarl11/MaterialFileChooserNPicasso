@@ -1,68 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.windows.materialfilechoosernpicasso.MainActivity">
 
     <LinearLayout
-        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        android:padding="0px">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/BTN_PICK"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/pickBtnLabel"
-        android:backgroundTint="@android:color/holo_blue_bright"/>
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:padding="0px">
 
-    <Button
-        android:id="@+id/BTN_UPLOAD"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/uploadBtnLabel"
-        android:backgroundTint="@android:color/holo_orange_light"/>
+            <Button
+                android:id="@+id/BTN_PICK"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pickBtnLabel"
+                android:backgroundTint="@android:color/holo_blue_bright"/>
 
-     <Button
-         android:id="@+id/BTN_SHOWLIST"
-         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:text="@string/showBtnLabel"
-         android:backgroundTint="@android:color/holo_red_light"/>
+            <Button
+                android:id="@+id/BTN_UPLOAD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/uploadBtnLabel"
+                android:backgroundTint="@android:color/holo_orange_light"/>
+
+            <Button
+                android:id="@+id/BTN_SHOWLIST"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/showBtnLabel"
+                android:backgroundTint="@android:color/holo_red_light"/>
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ET_TITLE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:hint="Title"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_view"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@+id/ET_TITLE"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="8dp"
+                android:contentDescription="Image"
+                android:scaleType="fitCenter"
+                app:layout_constraintTop_toBottomOf="@+id/ET_TITLE"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+            <TextView
+                android:id="@+id/TXTVIEW_PATH"
+                android:textColor="@android:color/black"
+                android:text="@string/chooseImageLabel"
+                android:freezesText="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/img_view"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"/>
+
+        </android.support.constraint.ConstraintLayout>
+
     </LinearLayout>
-    <EditText
-        android:id="@+id/ET_TITLE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_layout"
-        android:hint="Title"
-        android:textColor="@android:color/black"
-        android:inputType="text"/>
-    <ImageView
-        android:id="@+id/img_view"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:scaleType="fitCenter"
-        android:contentDescription="Image"/>
-
-    <TextView
-        android:id="@+id/TXTVIEW_PATH"
-        android:textColor="@android:color/black"
-        android:text="@string/chooseImageLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:layout_marginStart="20dp"/>
 
 
-</RelativeLayout>
+</ScrollView>
