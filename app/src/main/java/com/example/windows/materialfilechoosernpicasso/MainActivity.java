@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -17,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.esafirm.imagepicker.features.ImagePicker;
+import com.esafirm.imagepicker.features.ReturnMode;
+import com.esafirm.imagepicker.model.Image;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -31,8 +36,6 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.nbsp.materialfilepicker.MaterialFilePicker;
-import com.nbsp.materialfilepicker.ui.FilePickerActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -93,11 +96,11 @@ public class MainActivity extends AppCompatActivity
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1000 && resultCode == RESULT_OK)
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data))
         {
-            String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
-            path.setText(filePath);
-            showImage(filePath);
+            String image = ImagePicker.getFirstImageOrNull(data).getPath();
+            path.setText(image);
+            showImage(image);
         }
     }
 
@@ -115,13 +118,16 @@ public class MainActivity extends AppCompatActivity
             Picasso.get().load(f).into(imageView);
         }
     }
+
     @OnClick(R.id.BTN_PICK)
     public void pickOnClick(View view)
     {
-        new MaterialFilePicker()
-                .withActivity(MainActivity.this)
-                .withRequestCode(1000)
-                .withHiddenFiles(true)
+        ImagePicker.create(MainActivity.this)
+                .returnMode(ReturnMode.ALL)
+                .toolbarImageTitle("Select an image")
+                .toolbarArrowColor(Color.BLACK)
+                .single()
+                .enableLog(false)
                 .start();
     }
 

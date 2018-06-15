@@ -29,15 +29,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compile 'com.android.support:support-annotations:27.1.1'
-    //MaterialFileChooser
-    compile 'com.nbsp:library:1.8'
-    //Picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
     //Butterknife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //Dexter
     implementation 'com.karumi:dexter:4.2.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
+    //Esa
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:1.11.1'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 apply plugin: 'com.google.gms.google-services'
