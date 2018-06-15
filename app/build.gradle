@@ -39,5 +39,7 @@ dependencies {
     implementation 'com.github.esafirm.android-image-picker:imagepicker:1.11.1'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //RoundedImage
+    compile 'com.makeramen:roundedimageview:2.3.0'
 }
 apply plugin: 'com.google.gms.google-services'

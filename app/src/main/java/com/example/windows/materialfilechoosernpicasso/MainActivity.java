@@ -36,7 +36,9 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.io.File;
 import java.net.URI;
@@ -114,8 +116,13 @@ public class MainActivity extends AppCompatActivity
     {
         if(imgPath != null)
         {
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .borderColor(Color.CYAN)
+                    .borderWidthDp(1)
+                    .oval(true)
+                    .build();
             File f = new File(imgPath);
-            Picasso.get().load(f).into(imageView);
+            Picasso.get().load(f).transform(transformation).into(imageView);
         }
     }
 
@@ -183,7 +190,6 @@ public class MainActivity extends AppCompatActivity
                         progressDialog.setMessage("Uploaded " + (int)progress + "%");
                     }
                 });
-
     }
 
 }
